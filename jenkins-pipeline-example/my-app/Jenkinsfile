@@ -9,19 +9,13 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                dir("/var/lib/jenkins/workspace/demopipelinetask/jenkins-pipeline-example/my-app/") {
-                sh 'mvn -B -DskipTests clean package'
-                }
+ 
+                sh 'mvn --version' 
+                sh 'java --version'
+                
             
             }
         }
     }
-    post {
-       always {
-          junit(
-        allowEmptyResults: true,
-        testResults: '*/test-reports/.xml'
-      )
-      }
-   } 
+   
 }
